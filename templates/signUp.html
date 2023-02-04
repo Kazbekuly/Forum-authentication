@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>SIGN IN</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/templates/css/style.css">
+  <script src="script.js" defer></script>
+  <!-- Bootstrap CSS v5.2.0-beta1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body style="background: #171c22;">
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand px-3 text-white" href="/" style="font-family: Atma; font-weight: bold; font-size: 25px;">FORUM</a>
+  </div>
+</nav>
+<div style="width:350px;" class="m-auto my-5">
+  <h2 class="text-white" style="font-weight: bold; ">Create Account</h2>
+  <div class="my-3">
+    <form action="/signUp" method="post">
+      <div class="email">
+        <div class="my-3 ms-1" style="inline-size:100%;">
+          <label >
+            <span class="text-white">Email</span>
+          </label>
+        </div>
+        <div class="getEmail">
+          <input type="email" name="email" class="border-0" style="inline-size:100%; border-radius: 15px; padding:5px; background-color: #E6E6E8;"  autocapitalize="none" autocorrect="off" maxlength="30">
+        </div>
+      </div>
+      <div class="username">
+        <div class="my-3 ms-1" style="inline-size:100%;">
+          <label >
+            <span class="text-white">Username</span>
+          </label>
+        </div>
+        <div class="getUsername">
+          <input type="text" class="border-0" style="inline-size:100%; border-radius: 15px; padding:5px; background-color:#E6E6E8;" name="username" autocapitalize="none" autocorrect="off" maxlength="30">
+        </div>
+      </div>
+      <div class="password">
+        <div class="my-3 ms-1">
+          <label >
+            <span class="text-white">Password</span>
+          </label>
+        </div>
+        <div class="getPassword">
+          <input type="password" id="password" class="border-0" style="inline-size:100%; border-radius: 15px; padding:5px;  background-color: #E6E6E8;" name="password" autocomplete="off" autocorrect="off" onInput="check()" maxlength="30"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" />
+        </div>
+      </div>
+      <button class="my-4 bg-primary border-0" style="inline-size:100%; border-radius: 15px; color: aliceblue; padding:5px;" type="submit">CREATE ACCOUNT</button>
+    </form>
+    <p><a class="login" href="/signUp/google">Continue with Google</a></p>
+    <p><a class="login" href="/signUp/github">Continue with Github</a></p>
+  </div>
+  <div class="create" >
+    <a href="/signIn" class="bg-secondary text-white py-2" style="text-decoration: none; display: block; overflow: auto; text-align: center; border-radius: 15px; margin-top: 5%;" role="button" >SIGN IN</a>
+  </div>
+</div>
+</body>
+</html>

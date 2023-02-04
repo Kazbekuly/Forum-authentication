@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>FORUM</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/templates/css/style.css">
+  <!-- Bootstrap CSS v5.2.0-beta1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body style="background: #171c22;">
+<nav class="navbar navbar-expand-lg" >
+  <div class="container-fluid">
+    <a class="navbar-brand ms-3 text-white " id="forum" href="/">FORUM</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      </ul>
+      {{ if .Username}}
+      <form action="/logout" method="get">
+        <button class="signout border-0 text-white">Sign Out</button>
+      </form>
+      {{else}}
+      <a href="/signIn" class="text-decoration-none text-white" title="Account">
+        <span>Account</span>
+      </a>
+      {{end}}
+    </div>
+  </div>
+</nav>
+<!-- --------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+  <div class="row " id="row">
+    {{if .Username}}
+    <div class="col-2" >
+      <div class="img">
+        <img class="rounded-circle" id="img" src="/templates/images/profile.jpg" alt="">
+      </div>
+      <div class="username text-white" id="username">
+        <p>{{ .Username}}</p>
+      </div>
+      <div class="myposts py-3">
+        <a href="/" class="text-decoration-none text-secondary" >
+          <img src="/templates/images/home.png" alt="">
+          <span>Home</span>
+        </a>
+      </div>
+      <div class="filterCategory py-3">
+        <a href="/categoryPost" class="text-decoration-none text-secondary">
+          <img src="/templates/images/category.png" id="categoryImg"  >
+          <span>Categories</span>
+        </a>
+      </div>
+      <div class="filterUsers py-3">
+        <a href="/myposts" class="text-decoration-none text-secondary">
+          <img src="/templates/images/user.png" id="myPostImg">
+          <span>My posts</span>
+        </a>
+      </div>
+      <div class="filterLikes py-3">
+        <a href="/likedPost" class="text-decoration-none text-secondary">
+          <img src="/templates/images/like.png" id="likeImg">
+          <span>Likes</span>
+        </a>
+      </div>
+      <div class="allposts py-3">
+        <a href="/createPost" class="text-decoration-none text-secondary">
+          <img src="/templates/images/createPost.png" alt="">
+          <span>Create Post</span>
+        </a>
+      </div>
+    </div>
+    {{end}}
+    <div class="container col"  >
+      <form action="/createPost" method="post" enctype="multipart/form-data">
+        <div class="border-0 rounded row" style="background-color:#242b33;  ">
+          <div class="">
+            <div class="input-group mb-3 mt-3">
+              <span class="input-group-text" id="createPostTitle">Title</span>
+              <input type="text"  class="form-control text-white" id="createPostTitleInput" name="title" autocapitalize="none" autocorrect="off" placeholder="write title"  aria-describedby="basic-addon1" maxlength="50">
+            </div>
+            <div class="input-group mb-3 mt-3">
+              <span class="input-group-text" id="chooseTags">Tags</span>
+              <div id="createPostTags" >
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox1" value="Education" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox1">Education</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox2" value="Technology" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox2">Technology</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox3" value="Business" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox3">Business</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox4" value="Career" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox4">Career</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox5" value="Personal" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox5">Personal</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" style="background-color: #242b33; border-color: #313840;" type="checkbox" id="inlineCheckbox6" value="Other" name="tag">
+                  <label class="form-check-label text-secondary" for="inlineCheckbox6">Other</label>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3 mt-3">
+              <span class="input-group-text" id="uploadImage">Upload File: </span>
+              <input style="color: aliceblue; padding: 8px;" type="file" name="image" multiple>
+            </div>
+            <div class="input-group mb-3 mt-3">
+              <span class="input-group-text" id="createPostText">Text</span>
+              <textarea type="text"  class="form-control text-white" id="createPostTextInput" name="text" autocapitalize="none" autocorrect="off" placeholder="write something ..."  aria-describedby="basic-addon1" rows="3" maxlength="500"></textarea>
+              <button class="btn btn-outline-secondary" style="border-color:#313840 ; color: aliceblue;" type="submit" id="button-addon2"><img src="templates/images/send.png"  alt=""></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>

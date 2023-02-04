@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>FORUM</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/templates/css/style.css">
+<!-- Bootstrap CSS v5.2.0-beta1 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body style="background: #171c22;">
+<nav class="navbar navbar-expand-lg" >
+<div class="container-fluid">
+  <a class="navbar-brand ms-3 text-white " id="forum" href="/">FORUM</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0"></ul>
+    {{if .User}}
+    <form action="/logout" method="get">
+      <button class="border-0 signout text-white">Sign Out</button>
+    </form>
+    {{else}}
+    <a href="/signIn" class="text-decoration-none text-white" title="Account">
+      <span>Account</span>
+    </a>
+    {{end}}
+  </div>
+</div>
+</nav>
+<!-- --------------------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+<div class="row " id="row">
+  <div class="col-2" >
+    <div class="img">
+      <img class="rounded-circle" id="img" src="/templates/images/profile.jpg" >
+    </div>
+    <div class="username text-white" id="username">
+      <p>{{ .User}}</p>
+    </div>
+    <div class="myposts py-3">
+      <a href="/" class="text-decoration-none text-secondary" >
+        <img src="/templates/images/home.png" >
+        <span>Home</span>
+      </a>
+    </div>
+    <div class="filterCategory py-3">
+      <a href="/categoryPost" class="text-decoration-none text-secondary">
+        <img src="/templates/images/category.png" id="categoryImg"  >
+        <span>Categories</span>
+      </a>
+    </div>
+    <div class="filterUsers py-3">
+      <a href="/myposts" class="text-decoration-none text-secondary">
+        <img src="/templates/images/user.png"  id="myPostImg" >
+        <span>My posts</span>
+      </a>
+    </div>
+    <div class="filterLikes py-3">
+      <a href="/likedPost" class="text-decoration-none text-secondary">
+        <img src="/templates/images/like.png" id="likeImg"  >
+        <span>Likes</span>
+      </a>
+    </div>
+    <div class="allposts py-3">
+      <a href="/createPost" class="text-decoration-none text-secondary">
+        <img src="/templates/images/createPost.png" >
+        <span>Create Post</span>
+      </a>
+    </div>
+  </div>
+  <div class="col">
+    {{ range .Posts}}
+    <div class="border-0 rounded my-2" style="background-color: #242b33;" >
+      <div class="user row" style="padding-top: 15px;">
+        <div class="userPhoto col-1" style="padding-left: 2%; width: 4%;">
+          <img src="templates/images/user.png"  style="width: 45px;">
+        </div>
+        <div class="userUsername col-10 px-4">
+          <span style="color: white;">{{.Author}}</span>
+          <p style="color: white; font-size: 13px;">{{.CreatedAt}}</p>
+        </div>
+      </div>
+      <div class="printPost" style="padding-left: 20px;">
+        <p style="color: white; font-size: 22px; font-weight: bold; ">{{.Title}}</p>
+        <p style="color: white">{{.Text}}</p>
+      </div>
+      <form action="/post" method="get">
+        <button class="btn btn-outline-secondary" style="border-color:#313840 ; color: aliceblue; margin-left: 9px;" type="submit" value="{{.Id}}" name="postID">more...</button>
+      </form> 
+      <div style="display: flex;">
+        <div style="display: flex;">
+          <form action="/like" method="post">
+            <button class="btn btn-outline-secondary mx-2" value="{{.Id}}"  name="postId" style="border-color:#313840 ; color: aliceblue; height: 40px; margin-top: 16px;" type="submit" >
+              <img src="templates/images/like.png">
+              <span style="padding-left: 5px;">{{.Like}}</span>
+            </button>
+          </form>
+          <form action="/dislike" method="post">
+            <button class="btn btn-outline-secondary " value="{{.Id}}" name="postId" style="border-color:#313840 ; color: aliceblue; height: 40px; margin-top: 16px;" type="submit" >
+              <img src="templates/images/dislike.png" >
+              <span style="padding-left: 5px;">{{.Dislike}}</span>
+            </button>
+          </form>
+          <form action="/post" method="get">
+            <button class="btn btn-outline-secondary mx-2" style="border-color:#313840 ; color: aliceblue; height: 40px; margin-top: 16px;" type="submit" value="{{.Id}}" name="postID">
+                <img src="templates/images/comment.png">
+            </button>
+          </form>
+        </div>
+        <form action="/comment" method="post" style="width: 80%">
+          <div class="input-group my-3 mx-2">
+            <input type="text" class="form-control text-white" style="background-color: #242b33; border-color:#313840; " id="createPostComment" name="comment" autocapitalize="none" autocorrect="off" placeholder="comment ..."  aria-describedby="basic-addon1" ></input>
+            <button class="btn btn-outline-secondary " style="border-color:#313840 ; color: aliceblue;" value="{{.Id}}" name="postId" type="submit" id="button-addon2"><img src="templates/images/send.png"  alt=""></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    {{end}}
+  </div>
+</div>
+</div>
+
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>

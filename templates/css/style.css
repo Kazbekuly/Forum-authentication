@@ -1,0 +1,192 @@
+*{
+    font-family: Atma;
+}
+/* ---------------------------SIGNIN------------------------------------- */
+.or {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .or span {
+    position: absolute;
+    top: -11px;
+    background: #fff;
+    padding: 0 5px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+  }
+
+/* ---------------------------------------------------------------- */
+#forum{
+    font-size: 25px;
+    font-weight: bold;
+
+}
+#navhome{
+    font-weight: bold;
+}
+#navlink{
+    font-weight: bold;
+}
+#navdrop{
+    font-weight: bold;
+}
+.signout{
+    font-weight: bold;
+    background-color:#171c22;
+}
+#row{
+    padding: 5%;
+}
+#img{
+    width:20%;
+    margin-left: 25%;
+}
+#username{
+    padding-top:10%;
+    font-size: 18px;
+}
+#posts{
+    margin-right: 5%;
+}
+
+.myposts a{
+    display: flex;
+    align-items: center;
+}
+
+.myposts a img{
+    padding-right:7px ;
+    margin-right: 7px;
+    width: 30px;
+}
+
+.allposts a{
+    display: flex;
+    align-items: center;
+}
+
+.allposts a img{
+    padding-right:7px ;
+    margin-right: 7px;
+    width: 30px;
+    
+}
+.filterCategory{
+    display: flex;
+    align-items: center;
+}
+
+.filterUsers{
+    display: flex;
+    align-items: center;
+}
+
+.createPosts{
+    display: flex;
+    align-items: center;
+}
+.createPosts a img{
+    margin-right: 3px;
+    padding-right:5px ;
+    width: 30px;
+    height: 23px;
+}
+/* ------------------createPost---------------- */
+
+#createPostTitle{
+    background-color: #242b33; 
+    font-size: 17px; 
+    color: aliceblue; 
+    border-color:#313840; 
+}
+
+#createPostTitleInput{
+    background-color: #242b33; 
+    border-color:#313840 ;
+    text-decoration-color: aliceblue;
+}
+
+#chooseTags{
+    background-color: #242b33; 
+    font-size: 17px; 
+    color: aliceblue; 
+    border-color:#313840;
+}
+#createPostTags{
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    color: white;
+    border-color: #313840 ;
+}
+
+#createPostText{
+    background-color: #242b33; 
+    font-size: 17px; 
+    color: aliceblue; 
+    border-color:#313840; 
+}
+
+#createPostTextInput{
+    background-color: #242b33; 
+    border-color:#313840 ;
+}
+
+#uploadImage{
+    background-color: #242b33; 
+    font-size: 17px; 
+    color: aliceblue; 
+    border-color:#313840;
+}
+/* ----------------------------menu------------- */
+#categoryImg{
+    padding-right: 6px; 
+    margin-right: 7px; 
+    width: 27px; 
+    height: 23px;
+}
+
+#myPostImg{
+    padding-right: 7px; 
+    margin-right: 7px; 
+    width: 27px; 
+    height: 23px;
+}
+#likeImg{
+    padding-right: 7px; 
+    margin-right: 7px; 
+    width: 27px; 
+    height: 23px;
+}
+
+/* ------------------------error page---------------- */
+.status {
+    background: repeating-linear-gradient(to right, #eeeeee, #bbb3b3 10%, #f0e7e7 20%);
+    background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-size: 250px; 
+   display: flex; 
+   justify-content: center;
+}
+.message{
+  display: flex; 
+  justify-content: center;
+   font-family:'Courier New', Courier, monospace; 
+}
+.error{
+    padding: 1px;
+}
+  
+/* ------------------------------------------ */
+.login{
+    border: 1px gray solid; 
+    background-color:whitesmoke; 
+    text-decoration: none; 
+    color: #171c22; 
+    padding: 5px 85px;
+    border-radius:15px;
+}
